@@ -2,10 +2,13 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+//String reminderSound =  == true ? ;
+
 class NotificationToneModel extends ChangeNotifier {
   AssetsAudioPlayer player = AssetsAudioPlayer.newPlayer();
   static const String _boxName = "tonesBox";
   static const String _key = "tone";
+
   bool _isClassic = false;
   bool _isDream = false;
   bool _isDrizzle = false;
@@ -19,6 +22,21 @@ class NotificationToneModel extends ChangeNotifier {
   bool get isEnchantment => _isEnchantment;
   bool get isSynthwave => _isSynthwave;
   bool get isBell => _isBell;
+
+  String reminderSound() {
+    String reminderTone;
+    reminderTone = isClassic == true
+        ? 'classic_alarm'
+        : isDream == true
+            ? 'dream'
+            : isDrizzle == true
+                ? 'drizzle'
+                : isEnchantment == true
+                    ? 'enchantment'
+                    : isSynthwave == true ? 'synthwave' : 'twin_bell';
+    notifyListeners();
+    return reminderTone;
+  }
 
   List<String> _tones = [
     "Classic Alarm",

@@ -7,6 +7,7 @@ import 'package:MedBuzz/core/models/appointment_reminder_model/appointment_remin
 import 'package:MedBuzz/core/models/notification_model/notification_model.dart';
 import 'package:MedBuzz/core/models/user_model/user_model.dart';
 import 'package:MedBuzz/core/models/water_reminder_model/water_drank.dart';
+import 'package:MedBuzz/core/notifications/fitness_notification_manager.dart';
 import 'package:MedBuzz/core/providers/providers.dart';
 import 'package:MedBuzz/ui/darkmode/dark_mode_model.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
 class MaterialAPP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+//    print(reminderSound);
     return FeatureDiscovery(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

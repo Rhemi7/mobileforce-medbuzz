@@ -40,6 +40,32 @@ class FitnessReminderCRUD extends ChangeNotifier {
   String selectedDay4 = 'Mon';
   String selectedFreq = "Daily";
 
+  final List<int> selectedDaysOfWeek = [];
+
+  void updateSelectedDaysOfWeek(int weekday) {
+    //DateTime weekday starts at 1 as Monday and 7 as Sunday
+    if (selectedDaysOfWeek.contains(weekday)) {
+      //remove the day from selected if it is already there
+      selectedDaysOfWeek.removeWhere((item) => item == weekday);
+    } else {
+      //add it to the selected if it is not
+      selectedDaysOfWeek.add(weekday);
+    }
+    notifyListeners();
+  }
+
+  Color selectDayColor(context, weekday) {
+    return selectedDaysOfWeek.contains(weekday)
+        ? Theme.of(context).primaryColor
+        : Theme.of(context).primaryColorLight;
+  }
+
+  Color selectDayTextColor(context, weekday) {
+    return selectedDaysOfWeek.contains(weekday)
+        ? Theme.of(context).primaryColorLight
+        : Theme.of(context).primaryColorDark;
+  }
+
   dynamic get selectedTime => _selectedTime;
   List<FitnessReminder> _fitnessReminder = [];
   List<FitnessReminder> get fitnessReminder => _fitnessReminder;

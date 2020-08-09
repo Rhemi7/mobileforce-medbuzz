@@ -1161,11 +1161,12 @@ class _FitnessEditScreenState extends State<FitnessEditScreen> {
                                     String hour = time.substring(0, 2);
                                     String minutes = time.substring(3, 5);
                                     DateTime now = DateTime.now();
-                                    String id =
-                                        '${now.year}${now.month}${now.day}$hour$minutes';
-                                    String notifId = id.length < 11
-                                        ? id
-                                        : id.substring(0, 10);
+                                    int randomId = Random().nextInt(999);
+                                    String nId = '${now.year}${now.month}$randomId';
+
+                                    String notifId = nId.length < 11
+                                        ? nId
+                                        : nId.substring(0, 10);
 
                                     printStatements();
 //                                    var diff = model.endDate
@@ -1206,7 +1207,7 @@ class _FitnessEditScreenState extends State<FitnessEditScreen> {
                                       case 'Daily':
                                         fitnessNotificationManager
                                             .showFitnessNotificationDaily(
-                                                id: num.parse(notifId),
+                                                id: int.parse(notifId),
                                                 title:
                                                     "Hey It's Time to Go For ${newReminder.fitnesstype}",
                                                 body:
