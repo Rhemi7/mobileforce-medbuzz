@@ -33,13 +33,6 @@ class _FitnessEditScreenState extends State<FitnessEditScreen> {
     // var fitnessDB = Provider.of<FitnessReminderCRUD>(context);
 
     String appBar = widget.isEdit == true ? fitnessDB.edit : fitnessDB.add;
-    // TextEditingController descController = TextEditingController();
-    // FocusNode focusNode = FocusNode();
-
-    // if (fitnessDB.isEditing && _changedName == false) {
-    //   descController.text = fitnessDB.description;
-    //   _changedName = true;
-    // }
 
     FitnessNotificationManager fitnessNotificationManager =
         FitnessNotificationManager();
@@ -1156,10 +1149,11 @@ class _FitnessEditScreenState extends State<FitnessEditScreen> {
                                             fitnesstype: model.fitnessType[
                                                 model.selectedIndex]);
                                     await fitnessDB.addReminder(newReminder);
-                                    String time =
-                                        model.getDateTime().toString();
-                                    String hour = time.substring(0, 2);
-                                    String minutes = time.substring(3, 5);
+                                    DateTime time = model.startDate;
+                                    String hour =
+                                        time.hour.toString().padLeft(2, '0');
+                                    String minutes =
+                                        time.minute.toString().padLeft(2, '0');
                                     DateTime now = DateTime.now();
                                     int randomId = Random().nextInt(999);
                                     String nId = '${now.year}${now.month}$randomId';
