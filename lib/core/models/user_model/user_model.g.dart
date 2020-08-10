@@ -40,5 +40,5 @@ class UserAdapter extends TypeAdapter<User> {
 
   @override
   // TODO: implement typeId
-  int get typeId => 6;
+  int get typeId => 7;
 }

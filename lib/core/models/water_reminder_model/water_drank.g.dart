@@ -31,5 +31,5 @@ class WaterDrankAdapter extends TypeAdapter<WaterDrank> {
 
   @override
   // TODO: implement typeId
-  int get typeId => 7;
+  int get typeId => 6;
 }
